@@ -1,3 +1,11 @@
 ##grflangid 0x01
 
-STR_GRF_NAME    :Bad Apple
+STR_GRF_NAME        :{PUSH_COLOUR}{WHITE}Bad{POP_COLOUR} {PUSH_COLOUR}{BLACK}Apple{POP_COLOUR}
+STR_GRF_DESC        :Lot's of LoLz.
+STR_URL             :https://github.com/wensimehrp/bad-apple-grf
+
+PARAM_SOUND         :Play sound
+PARAM_SOUND_DESC    :Determine whether to play sound or not
+
+STR_ITEM            :{PUSH_COLOUR}{WHITE}Bad{POP_COLOUR} {PUSH_COLOUR}{BLACK}Apple{POP_COLOUR}
+STR_ADDITIONAL_TEXT :An animated object

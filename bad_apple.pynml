@@ -1,10 +1,21 @@
 grf {
     grfid:                  "WSBA";
     name:                   string(STR_GRF_NAME);
-    desc:                   string(STR_GRF_NAME);
-    url:                    string(STR_GRF_NAME);
+    desc:                   string(STR_GRF_DESC);
+    url:                    string(STR_URL);
     version:                1;
     min_compatible_version: 1;
+
+    param 0 {
+        param_sound {
+            name: string(PARAM_SOUND);
+            desc: string(PARAM_SOUND_DESC);
+            type: bool;
+            bit: 0;
+            def_value: 0;
+        }
+    }
+
 }
 
 spriteset(s_ba, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP){
@@ -20,10 +31,15 @@ spritelayout ba {
     }
 }
 
+switch(FEAT_OBJECTS, SELF, sw_sound, animation_counter % TOTAL_NUMBER_OF_SPRITES) {
+    0: return (sound("bad_apple_audio.wav", 100) << 8) | CB_RESULT_NEXT_FRAME;
+    default: return CB_RESULT_NEXT_FRAME;
+}
+
 item(FEAT_OBJECTS, ba_item) {
     property {
         class: "WSBA";
-        name: string(STR_GRF_NAME);
+        name: string(STR_ITEM);
         climates_available: ALL_CLIMATES;
         size: [1,1];
         object_flags: bitmask(OBJ_FLAG_ANIMATED);
@@ -33,8 +49,9 @@ item(FEAT_OBJECTS, ba_item) {
     }
     graphics {
         default: ba;
-        anim_next_frame: CB_RESULT_NEXT_FRAME;
+        anim_next_frame: param_sound ? sw_sound() : CB_RESULT_NEXT_FRAME;
         anim_control: CB_RESULT_START_ANIMATION;
         anim_speed: 0;
+        additional_text: string(STR_ADDITIONAL_TEXT);
     }
 }

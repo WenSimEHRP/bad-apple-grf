@@ -6,11 +6,15 @@ Building Requirements:
 
 - nmlc
 - ffmpeg
+- find
 - python3
   - pillow
   - ply
 - just (optional)
 - internet connection
+
+Note that when using fast-forward the sound will not be fast-forwarded.
+The music will continue playing, even if you abandon the game. It will only stop when it ends or you quit the game.
 
 Building:
 
