@@ -1,0 +1,5 @@
+*.pyc
+*.nml
+*.grf
+*.mp4
+.nmlcache

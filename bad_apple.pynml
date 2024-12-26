@@ -1,0 +1,40 @@
+grf {
+    grfid:                  "WSBA";
+    name:                   string(STR_GRF_NAME);
+    desc:                   string(STR_GRF_NAME);
+    url:                    string(STR_GRF_NAME);
+    version:                1;
+    min_compatible_version: 1;
+}
+
+spriteset(s_ba, ZOOM_LEVEL_IN_4X, BIT_DEPTH_32BPP){
+    $spriteset_entries
+}
+
+const TOTAL_NUMBER_OF_SPRITES = $spriteset_entries_count;
+
+spritelayout ba {
+    ground {sprite: GROUNDSPRITE_NORMAL;}
+    building {
+        sprite: s_ba(animation_counter % TOTAL_NUMBER_OF_SPRITES);
+    }
+}
+
+item(FEAT_OBJECTS, ba_item) {
+    property {
+        class: "WSBA";
+        name: string(STR_GRF_NAME);
+        climates_available: ALL_CLIMATES;
+        size: [1,1];
+        object_flags: bitmask(OBJ_FLAG_ANIMATED);
+        animation_info: [ANIMATION_LOOPING, 16];
+        animation_speed: 0;
+        animation_triggers: ANIM_TRIGGER_OBJ_256_TICKS;
+    }
+    graphics {
+        default: ba;
+        anim_next_frame: CB_RESULT_NEXT_FRAME;
+        anim_control: CB_RESULT_START_ANIMATION;
+        anim_speed: 0;
+    }
+}
