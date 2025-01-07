@@ -13,14 +13,6 @@ fetch:
 clone_nml:
     git clone https://github.com/openttd/nml.git
 
-clean:
-    find -name "*.png" -delete
-    find -name "*.grf" -delete
-    find -name "*.mp4" -delete
-    find -name "*.nml" -delete
-    find -name "*.wav" -delete
-    rm .nmlcache -r
-
 cp:
     # different on windows lolz
     cp ./bad_apple.grf ~/.local/share/openttd/newgrf/
