@@ -1,5 +1,8 @@
 # Random Bad Apple GRF
 
+> [!NOTE]
+> You can change the link in `justfile` to encode _any_ video into a grf.
+
 Fetches a bad apple video and encodes it to a newgrf.
 
 Building Requirements:
